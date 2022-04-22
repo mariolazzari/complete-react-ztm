@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
+import Card from "./Card";
+import "./CardList.css";
 
 const CardList = props => {
   return (
-    <div>
-      {props.items.map(monster => (
-        <div key={monster.id}>
-          <h1>{monster.name}</h1>
-        </div>
+    <div className="card-list">
+      {props.items.map(item => (
+        <Card item={item} />
       ))}
     </div>
   );
