@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import SearchBox from "./components/SearchBox";
+import CardList from "./components/CardList";
 import "./App.css";
 
 function App() {
@@ -21,18 +23,12 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        className="search-text"
-        type="search"
-        placeholder="Find monster..."
+      <SearchBox
+        className="monster-search-box"
         onChange={onSearchChange}
+        placeholder="Search monsters..."
       />
-
-      {monsters.filter(filterMonsters).map(monster => (
-        <div key={monster.id}>
-          <h1>{monster.name}</h1>
-        </div>
-      ))}
+      <CardList items={monsters.filter(filterMonsters)} />
     </div>
   );
 }
