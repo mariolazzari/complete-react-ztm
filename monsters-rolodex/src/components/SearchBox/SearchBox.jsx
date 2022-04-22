@@ -1,18 +1,14 @@
 import PropTypes from "prop-types";
 import "./SearchBox.css";
 
-const SearchBox = props => {
-  return (
-    <div>
-      <input
-        className={`search-box ${props.className}`}
-        type="search"
-        placeholder={props.placeholder}
-        onChange={props.onChange}
-      />
-    </div>
-  );
-};
+const SearchBox = ({ className, placeholder, onChange }) => (
+  <input
+    className={`search-box ${className}`}
+    type="search"
+    placeholder={placeholder}
+    onChange={onChange}
+  />
+);
 
 SearchBox.defaultProps = {
   className: "search-text",

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import "./Card.css";
 
-const Card = props => {
-  const { id, name, email } = props.item;
+const Card = ({ item }) => {
+  const { id, name, email } = item;
 
   return (
     <div key={id} className="card-container">

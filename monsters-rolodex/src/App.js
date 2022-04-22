@@ -3,34 +3,43 @@ import SearchBox from "./components/SearchBox";
 import CardList from "./components/CardList";
 import "./App.css";
 
-function App() {
-  const [monsters, setMonsters] = useState([]);
+const App = () => {
   const [searchText, setSearchText] = useState("");
+  const [monsters, setMonsters] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
   const onSearchChange = e => {
     const searchTerm = e.target.value.toLowerCase();
     setSearchText(searchTerm);
   };
 
-  const filterMonsters = monster =>
-    monster.name.toLowerCase().includes(searchText);
-
+  // init
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
       .then(data => setMonsters(data));
   }, []);
 
+  // filter
+  useEffect(() => {
+    const filtered = monsters.filter(monster =>
+      monster.name.toLowerCase().includes(searchText)
+    );
+    setFiltered(filtered);
+  }, [monsters, searchText]);
+
   return (
-    <div className="App">
+    <>
+      <h1 className="app-title">Monsters Rolodex</h1>
+
       <SearchBox
         className="monster-search-box"
         onChange={onSearchChange}
         placeholder="Search monsters..."
       />
-      <CardList items={monsters.filter(filterMonsters)} />
-    </div>
+      <CardList items={filtered} />
+    </>
   );
-}
+};
 
 export default App;
