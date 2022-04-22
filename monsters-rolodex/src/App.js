@@ -3,24 +3,20 @@ import "./App.css";
 
 function App() {
   const [monsters, setMonsters] = useState([]);
-  const [filteredMonsters, setFilteredMonsters] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const onSearchChange = e => {
-    const searchTerm = e.target.value;
-    const filteredMonsters = monsters.filter(monster =>
-      monster.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    setFilteredMonsters(filteredMonsters);
+    const searchTerm = e.target.value.toLowerCase();
+    setSearchText(searchTerm);
   };
+
+  const filterMonsters = monster =>
+    monster.name.toLowerCase().includes(searchText);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
-      .then(data => {
-        setMonsters(data);
-        setFilteredMonsters(data);
-      });
+      .then(data => setMonsters(data));
   }, []);
 
   return (
@@ -32,7 +28,7 @@ function App() {
         onChange={onSearchChange}
       />
 
-      {filteredMonsters.map(monster => (
+      {monsters.filter(filterMonsters).map(monster => (
         <div key={monster.id}>
           <h1>{monster.name}</h1>
         </div>
