@@ -6,7 +6,7 @@ import "./App.css";
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const [monsters, setMonsters] = useState([]);
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState(monsters);
 
   const onSearchChange = e => {
     const searchTerm = e.target.value.toLowerCase();
