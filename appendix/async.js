@@ -9,7 +9,7 @@ const myPromise = new Promise((resolve, reject) => {
 });
 
 myPromise
-  .then(result => result + "!!!")
+  .then(result => result + "!")
   .then(result => console.log(result))
   .catch(error => console.log(error));
 
@@ -20,4 +20,5 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
 // error
 fetch("https://jsonplaceholder.typicode.com/todossss/1")
   .then(response => response.json())
-  .then(json => console.log(json));
+  .then(json => console.log(json))
+  .catch(error => console.error("Fetch error:", error));
