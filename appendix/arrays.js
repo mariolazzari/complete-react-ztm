@@ -26,3 +26,17 @@ include = newArray.includes(2, 3);
 console.log("includes 2, 3:", include);
 include = newArray.includes(2, 1);
 console.log("includes 2, 1:", include);
+
+// find
+let found = myArray.find(i => i === 5);
+console.log("find 5:", found);
+const people = [{ id: 1 }, { id: 4 }, { id: 5 }];
+found = people.find(p => p.id === 4);
+console.log("find 4:", found);
+
+// reduce
+const array = [1, 2, 3, 4, 5];
+let sum = array.reduce((acc, cur) => acc + cur, 0);
+console.log("reduce:", sum);
+sum = array.reduce((acc, cur) => acc + cur, 10);
+console.log("reduce from 10:", sum);
