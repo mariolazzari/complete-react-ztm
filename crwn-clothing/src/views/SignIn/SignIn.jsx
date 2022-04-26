@@ -1,5 +1,20 @@
+import {
+  signInWithGoogle,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase";
+
 const SignIn = () => {
-  return <div>SignIn</div>;
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGoogle();
+    const userDocRef = await createUserDocumentFromAuth(user);
+    console.log(userDocRef);
+  };
+
+  return (
+    <div>
+      <button onClick={logGoogleUser}>Sign in with Google</button>
+    </div>
+  );
 };
 
 export default SignIn;
