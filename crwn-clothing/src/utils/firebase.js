@@ -37,7 +37,7 @@ export const signInWithGoogleRedirect = () =>
 
 const db = getFirestore();
 
-export const createUserDocumentFromAuth = async userAuth => {
+export const createUserDocumentFromAuth = async (userAuth, info = {}) => {
   const userDocRef = doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
 
@@ -50,6 +50,7 @@ export const createUserDocumentFromAuth = async userAuth => {
         displayName,
         email,
         createdAt,
+        ...info,
       });
     } catch (error) {
       console.log("error creating user", error);
