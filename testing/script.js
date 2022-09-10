@@ -7,10 +7,12 @@ const sites = [
   "reactjs.org£",
 ];
 
-const search = site => {
+const search = (site, sites) => {
   const res = sites.filter(s => s.includes(site));
 
   return res.length > 3 ? res.slice(0, 3) : res;
 };
 
-console.log(search(""));
+console.log(search("", sites));
+
+module.exports = search;
