@@ -1,18 +1,19 @@
-const sites = [
-  "site1.com",
-  "mario.it",
-  "javascript.net",
-  "google.com",
-  "nodejs.org",
-  "reactjs.org£",
+const googleDatabse = [
+  "cats.com",
+  "souprecipes.com",
+  "flowers.com",
+  "animals.com",
+  "catpictures.com",
+  "myfavouritecats.com",
 ];
 
-const search = (site, sites) => {
-  const res = sites.filter(s => s.includes(site));
-
-  return res.length > 3 ? res.slice(0, 3) : res;
+const googleSearch = (searchInput, db) => {
+  const matches = db.filter(website => {
+    return website.includes(searchInput);
+  });
+  return matches.length > 3 ? matches.slice(0, 3) : matches;
 };
 
-console.log(search("", sites));
+console.log(googleSearch("com", googleDatabse));
 
-module.exports = search;
+module.exports = googleSearch;
